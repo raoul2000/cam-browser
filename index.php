@@ -1,7 +1,14 @@
 <?php
 
 require_once('browse-folder.php');
-$days = getIndexByDay(__DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham' );
+require_once('config.php');
+
+$folder = __DIR__ . '/' . $config['folder'] . '/' . $config['filePattern'];
+$timezone = isset($config['timezone']) && ! empty($config['timezone'])
+  ? $config['timezone']
+  : null;
+
+$days = getIndexByDay($folder, $timezone );
 
  ?><!DOCTYPE html>
 <html>
@@ -22,7 +29,7 @@ $days = getIndexByDay(__DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham' );
           $month = substr($date,4,2);
           $day   = substr($date,6,2); //day number
           $dateTime = new DateTime("$year/$month/$day");
-          echo "<li><a href=\"view.php?date=$date\">". $dateTime->format("D j Y")."</a><em>$countFiles images</em></li>";
+          echo "<li><a href=\"view.php?date=$date\">". $dateTime->format("D j Y")."</a> <em>$countFiles image(s)</em></li>";
         }
         echo "</ul>";
       }
