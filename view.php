@@ -10,7 +10,7 @@
   }
   require_once('select-by-day.php');
 
-  $files = getFilesByDay($date , __DIR__ . "/data-sample/*.txt", 'Pacific/Chatham');
+  $files = getFilesByDay($date , __DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham');
 
 ?><!DOCTYPE html>
 <html>
@@ -23,13 +23,15 @@
     <hr/>
     <?php
       if( count($files) === 0) {
-        echo "no image ti display";
+        echo "no image to display";
       } else {
+        echo "<p>".count($files)." image(s)</p>";
         echo "<ul>";
         foreach ($files as $filename => $filemtime) {
+          $fileRelativePath = "data-sample/" . basename($filename);
           $dateTime = new DateTime('@'.$filemtime);
           $dateFmt = $dateTime->format("D j Y - H:i:s");
-          echo "<li><img src=\"".$filename."\"/><em>".$dateFmt."</em></li>";
+          echo "<li><img src=\"".$fileRelativePath."\" style=\"width:100%;height:auto;\"/><em>".$dateFmt."</em></li>";
         }
         echo "</ul>";
       }

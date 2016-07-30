@@ -6,15 +6,15 @@ $refFilename = "img-ref.jpg";
 $sampleFiles = [
   [
     'name' => "file1.jpg",
-    'mtime' => "2016/01/28"
+    'mtime' => "2016/01/28 17:23"
   ],
   [
     'name' => "file2.jpg",
-    'mtime' => "2016/01/28"
+    'mtime' => "2016/01/28 12:30"
   ],
   [
     'name' => "file3.jpg",
-    'mtime' => "2015/12/01"
+    'mtime' => "2015/12/01 22:54"
   ]
 ];
 
