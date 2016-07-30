@@ -34,8 +34,9 @@ function getIndexByDay($pattern, $timezone = null) {
   return $index;
 }
 
-
+/*
 $result = getIndexByDay(__DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham' );
 print_r($result);
 $result = getIndexByDay(__DIR__ . "/data-sample/*.jpg" );
 print_r($result);
+*/

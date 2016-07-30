@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Find all files matching a pattern, and with a particular last modification day.
+ * The returned array keys are filenames, and values are last modification timestamp.
+ * Example :
+ * (
+ *    [D:\dev\cam-browser/data-sample/img-1.jpg] => 1469873997
+ *    [D:\dev\cam-browser/data-sample/img-2.jpg] => 1469873997
+ * )
+ * @param  string $day      the day value in format yyyymmdd
+ * @param  string $pattern  the file search pattern
+ * @param  string $timezone timezone
+ * @return array           list of files
+ */
 function getFilesByDay($day, $pattern, $timezone = null)
 {
   $result = [];
@@ -11,13 +24,14 @@ function getFilesByDay($day, $pattern, $timezone = null)
         $date->setTimezone(new DateTimeZone($timezone));
       }
       if ( $day === $date->format('Ymd')){
-        $result[$file] = $date->format('H:i:s');
+        $result[$file] = $date->getTimestamp();
       }
     }
   }
   return $result;
 }
 
-
-$result = getFilesByDay("20160729", __DIR__ . "/data-sample/*.jpg", 'Europe/Paris' );
+/*
+$result = getFilesByDay("20160730", __DIR__ . "/data-sample/*.jpg", 'Europe/Paris' );
 print_r($result);
+*/
