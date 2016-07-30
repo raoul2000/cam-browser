@@ -2,29 +2,31 @@
 
 // prepare data-sample folder
 $testFolder = __DIR__ . '/data-sample';
-
+$refFilename = "img-ref.jpg";
 $sampleFiles = [
   [
-    'name' => "file1.txt",
+    'name' => "file1.jpg",
     'mtime' => "2016/01/28"
   ],
   [
-    'name' => "file2.txt",
+    'name' => "file2.jpg",
     'mtime' => "2016/01/28"
   ],
   [
-    'name' => "file3.txt",
+    'name' => "file3.jpg",
     'mtime' => "2015/12/01"
   ]
 ];
 
 foreach($sampleFiles as $file) {
-  touch( $testFolder. '/' . $file['name'], strtotime($file['mtime']));
+  $destFile = $testFolder . '/' . $file['name'];
+  copy($refFilename, $destFile);
+  touch( $destFile, strtotime($file['mtime']));
 }
 
 // perform test getIndexByDay
 require_once('browse-folder.php');
-$result = getIndexByDay("$testFolder/*.txt", 'Pacific/Chatham' );
+$result = getIndexByDay("$testFolder/*.jpg", 'Pacific/Chatham' );
 //print_r($result);
 if( count($result) != 2 ||
     $result['20160128'] != 2 ||
@@ -38,7 +40,7 @@ echo "\n";
 
 // perform test getFilesByDay
 require_once('select-by-day.php');
-$result = getFilesByDay("20160128", "$testFolder/*.txt", 'Pacific/Chatham' );
+$result = getFilesByDay("20160128", "$testFolder/*.jpg", 'Pacific/Chatham' );
 //print_r($result);
 if( count($result) != 2  ) {
       echo "error";
