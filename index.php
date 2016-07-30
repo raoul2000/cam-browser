@@ -1,7 +1,7 @@
 <?php
 
 require_once('browse-folder.php');
-$days = getIndexByDay(__DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham' );
+$days = getIndexByDay(__DIR__ . "/data-sample/*.txt", 'Pacific/Chatham' );
 
  ?><!DOCTYPE html>
 <html>
@@ -16,9 +16,15 @@ $days = getIndexByDay(__DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham' );
       if( count($days) == 0 ) {
         echo "no image found";
       } else {
-        foreach ($days as $day => $countFiles) {
-          echo "days : " . $day . " ( " . $countFiles . " images )<br/>"; 
+        echo "<ul>";
+        foreach ($days as $date => $countFiles) {
+          $year  = substr($date,0,4);
+          $month = substr($date,4,2);
+          $day   = substr($date,6,2); //day number
+          $dateTime = new DateTime("$year/$month/$day");
+          echo "<li><a href=\"view.php?day=$date\">". $dateTime->format("D j Y")."</a><em>$countFiles images</em></li>";
         }
+        echo "</ul>";
       }
     ?>
   </body>
