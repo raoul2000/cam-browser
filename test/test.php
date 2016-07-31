@@ -1,8 +1,11 @@
 <?php
-
+// timezone support in php : http://php.net/manual/fr/timezones.php
 // prepare data-sample folder
+
 $testFolder = __DIR__ . '/data-sample';
 $refFilename = "img-ref.jpg";
+$timezone = "Europe/Paris";
+
 $sampleFiles = [
   [
     'name' => "file1.jpg",
@@ -25,8 +28,8 @@ foreach($sampleFiles as $file) {
 }
 
 // perform test getIndexByDay
-require_once('browse-folder.php');
-$result = getIndexByDay("$testFolder/*.jpg", 'Pacific/Chatham' );
+require_once('../lib/browse-folder.php');
+$result = getIndexByDay("$testFolder/*.jpg", $timezone );
 //print_r($result);
 if( count($result) != 2 ||
     $result['20160128'] != 2 ||
@@ -39,8 +42,8 @@ if( count($result) != 2 ||
 echo "\n";
 
 // perform test getFilesByDay
-require_once('select-by-day.php');
-$result = getFilesByDay("20160128", "$testFolder/*.jpg", 'Pacific/Chatham' );
+require_once('../lib/select-by-day.php');
+$result = getFilesByDay("20160128", "$testFolder/*.jpg", $timezone );
 //print_r($result);
 if( count($result) != 2  ) {
       echo "error";

@@ -1,6 +1,6 @@
 <?php
 
-require_once('browse-folder.php');
+require_once('lib/browse-folder.php');
 require_once('config.php');
 
 $folder = __DIR__ . '/' . $config['folder'] . '/' . $config['filePattern'];

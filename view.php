@@ -15,7 +15,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
     echo "mising date argument";
     exit(1);
   }
-  require_once('select-by-day.php');
+  require_once('lib/select-by-day.php');
 
   $files = getFilesByDay($date , $folder , $timezone);
 
