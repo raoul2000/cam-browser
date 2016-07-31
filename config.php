@@ -7,5 +7,6 @@ $config = [
   // file pattern to search for in the folder
   'filePattern' => "*.jpg",
   // timezone adjustment applied to the file last modification date
+  // timezone support in php : http://php.net/manual/fr/timezones.php
   'timezone' => "Pacific/Chatham"
 ];

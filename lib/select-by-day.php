@@ -30,8 +30,3 @@ function getFilesByDay($day, $pattern, $timezone = null)
   }
   return $result;
 }
-
-/*
-$result = getFilesByDay("20160730", __DIR__ . "/data-sample/*.jpg", 'Europe/Paris' );
-print_r($result);
-*/

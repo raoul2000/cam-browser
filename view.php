@@ -50,7 +50,8 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
 
             <div id="fullscreen" class="row" style="display:none;">
               <div class="col-md-12">
-                <button id="btn-back" type="button" class="btn btn-primary btn-block">Back</button>
+                <button id="btn-back" type="button" class="btn btn-primary btn-block">Close</button>
+                <hr/>
                 <h4 class="text-center hidden">21:00:12</h4>
                 <img id="img-fullscreen" src="" class="img-responsive">
               </div>

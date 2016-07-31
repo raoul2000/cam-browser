@@ -27,16 +27,9 @@ function getIndexByDay($pattern, $timezone = null) {
         $date->setTimezone(new DateTimeZone($timezone));
       }
       $day = $date->format('Ymd');
-      $index[$day] = isset($index[$day]) ? isset($index[$day]) + 1 : 1 ;
+      $index[$day] = isset($index[$day]) ? $index[$day] + 1 : 1 ;
     }
     krsort($index);
   }
   return $index;
 }
-
-/*
-$result = getIndexByDay(__DIR__ . "/data-sample/*.jpg", 'Pacific/Chatham' );
-print_r($result);
-$result = getIndexByDay(__DIR__ . "/data-sample/*.jpg" );
-print_r($result);
-*/

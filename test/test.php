@@ -16,6 +16,10 @@ $sampleFiles = [
     'mtime' => "2016/01/28 12:30"
   ],
   [
+    'name' => "file2a.jpg",
+    'mtime' => "2016/01/28 21:30"
+  ],
+  [
     'name' => "file3.jpg",
     'mtime' => "2015/12/01 22:54"
   ]
@@ -30,7 +34,7 @@ foreach($sampleFiles as $file) {
 // perform test getIndexByDay
 require_once('../lib/browse-folder.php');
 $result = getIndexByDay("$testFolder/*.jpg", $timezone );
-//print_r($result);
+print_r($result);
 if( count($result) != 2 ||
     $result['20160128'] != 2 ||
     $result['20151201'] != 1  ) {
