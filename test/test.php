@@ -34,9 +34,9 @@ foreach($sampleFiles as $file) {
 // perform test getIndexByDay
 require_once('../lib/browse-folder.php');
 $result = getIndexByDay("$testFolder/*.jpg", $timezone );
-print_r($result);
+//print_r($result);
 if( count($result) != 2 ||
-    $result['20160128'] != 2 ||
+    $result['20160128'] != 3 ||
     $result['20151201'] != 1  ) {
       echo "error";
     } else {
@@ -49,7 +49,7 @@ echo "\n";
 require_once('../lib/select-by-day.php');
 $result = getFilesByDay("20160128", "$testFolder/*.jpg", $timezone );
 //print_r($result);
-if( count($result) != 2  ) {
+if( count($result) != 3  ) {
       echo "error";
     } else {
       echo "success";
