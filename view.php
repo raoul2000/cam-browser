@@ -52,7 +52,6 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
               <div class="col-md-12">
                 <button id="btn-back" type="button" class="btn btn-primary btn-block">Close</button>
                 <hr/>
-                <h4 class="text-center hidden">21:00:12</h4>
                 <img id="img-fullscreen" src="" class="img-responsive">
               </div>
             </div>
@@ -66,6 +65,9 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                   {
                     $fileRelativePath = $config['folder'] .'/' . basename($filename);
                     $dateTime = new DateTime('@'.$filemtime);
+                    if($config['timezone'] != null){
+          						$dateTime->setTimezone(new DateTimeZone($config['timezone']));
+          					}
                     $dateFmt = $dateTime->format("D j Y - H:i:s");
                     ?>
 
