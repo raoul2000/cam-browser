@@ -21,27 +21,80 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
 
 ?><!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <title>day <?php echo $date; ?></title>
-  </head>
-  <body>
-    <h1>Day : <?php echo $date; ?></h1>
-    <hr/>
-    <?php
-      if( count($files) === 0) {
-        echo "no image to display";
-      } else {
-        echo "<p>".count($files)." image(s)</p>";
-        echo "<ul>";
-        foreach ($files as $filename => $filemtime) {
-          $fileRelativePath = "data-sample/" . basename($filename);
-          $dateTime = new DateTime('@'.$filemtime);
-          $dateFmt = $dateTime->format("D j Y - H:i:s");
-          echo "<li><img src=\"".$fileRelativePath."\" style=\"width:100%;height:auto;\"/><em>".$dateFmt."</em></li>";
-        }
-        echo "</ul>";
-      }
-     ?>
-  </body>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <link href="design/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="section">
+
+        <div class="container">
+            <div id="header" class="row">
+                <div class="col-md-12">
+                    <ul class="breadcrumb lead">
+                        <li>
+                            <a href="#">Home</a>
+                        </li>
+                        <li>
+                            <a href="index.php">Hall</a>
+                        </li>
+                        <li class="active"><?= $date ?> <small class="text-muted"><?= count($files) ?> image(s)</small></li>
+                    </ul>
+                    <hr>
+                </div>
+            </div>
+
+            <div id="fullscreen" class="row" style="display:none;">
+              <div class="col-md-12">
+                <button id="btn-back" type="button" class="btn btn-primary btn-block">Back</button>
+                <h4 class="text-center hidden">21:00:12</h4>
+                <img id="img-fullscreen" src="" class="img-responsive">
+              </div>
+            </div>
+
+            <div id="grid" class="row">
+              <?php
+                if( count($files) === 0) {
+                  echo "no image to display";
+                } else {
+                  foreach ($files as $filename => $filemtime)
+                  {
+                    $fileRelativePath = $config['folder'] .'/' . basename($filename);
+                    $dateTime = new DateTime('@'.$filemtime);
+                    $dateFmt = $dateTime->format("D j Y - H:i:s");
+                    ?>
+
+                      <div class="col-md-4">
+                        <img src="<?= $fileRelativePath ?>" class="img-responsive clickable">
+                        <h4 class="text-center"><?= $dateFmt ?></h4>
+                      </div>
+
+                    <?php
+                  }
+                }
+               ?>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+      $(function() {
+        $('img.clickable').on('click',function(ev){
+          var $img = $(ev.target);
+          console.log($img.attr('src'));
+          $('#img-fullscreen').attr('src', $img.attr('src'));
+          $('#grid').hide();
+          $('#fullscreen').show();
+        });
+
+        $('#btn-back').on('click',function(ev){
+          $('#fullscreen').hide();
+          $('#grid').show();
+        });
+      })
+    </script>
+</body>
 </html>
