@@ -1,6 +1,22 @@
 <?php
 require_once('config.php');
 
+// very basic script that deletes the file whose name is received as
+// a request GET parameter ('path') assumed to be urlencoded.
+// 
+// Returns a JSON response with the following format :
+// success :
+// {
+//  'error' : false,
+//  'message' : "file deleted"
+// }
+//
+// error :
+// {
+//  "error" : true,
+//  "message" : "the error message here"
+// }
+//
 
 if ( ! isset($_GET['path'])) {
   $result = [

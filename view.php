@@ -46,7 +46,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                         </li>
                         <li class="active"><?= $date ?> <small class="text-muted"><?= count($files) ?> image(s)</small></li>
                     </ul>
-                    <hr>
+                    <hr/>
                 </div>
             </div>
 
@@ -57,7 +57,25 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                 <img id="img-fullscreen" src="" class="img-responsive">
               </div>
             </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="clearfix">
 
+                <div class="btn-toolbar pull-right" role="toolbar" aria-label="...">
+                  <div class="btn-group " role="group" aria-label="...">
+                    <button  id="btn-back-to-index" type="button" class="btn btn-default">
+                      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back To Hall
+                    </button>
+                    <button id="btn-delete-all" type="button" class="btn btn-danger" data-date="<?= $date ?>">
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete All
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <hr/>
+              </div>
+
+            </div>
             <div id="grid" class="row">
               <?php
                 if( count($files) === 0) {
@@ -105,6 +123,9 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
           $('#grid').show();
         });
 
+        /**
+         * Deletes a single file
+         */
         $('.btn-delete').on('click',function(ev){
           var btn = $(ev.target);
           console.log(btn.data('path'));
@@ -117,7 +138,29 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
               }
             });
           }
+        });
 
+        /**
+         * Delete all files having last modified date equal to the current date being displayed
+         */
+        $('#btn-delete-all').on('click',function(ev){
+          var date = $(ev.target).data('date');
+          if( confirm("WARNING : you are about to delete all files for the date '"+date+"'.\nAre you sure ?")){
+            $.getJSON('delete-all-files.php' , { "date": date },function(data){
+              if(data.error) {
+                alert('Error : '+data.message);
+              } else {
+                btn.closest('.col-md-4').hide('slow');
+              }
+            });
+          }
+        });
+
+        /**
+         * Navigates to the previous index page
+         */
+        $('#btn-back-to-index').on('click',function(ev){
+          // TODO : implement me !
         });
       })
     </script>

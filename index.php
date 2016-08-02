@@ -33,7 +33,7 @@ $days = getIndexByDay($folder, $timezone );
                          </li>
                          <li class="active">Hall</li>
                      </ul>
-                     <hr>
+                     <hr/>
                  </div>
              </div>
              <div class="row">
@@ -41,12 +41,15 @@ $days = getIndexByDay($folder, $timezone );
                      <div class="list-group">
                        <?php
                          if( count($days) == 0 ) {
-                           echo "no image found";
+                           // this should never occur as an empty folder should not be
+                           // listed in the image index page
+                           echo "<p>no image found</p>";
                          } else {
                            foreach ($days as $date => $countFiles) {
                              $year  = substr($date,0,4);
                              $month = substr($date,4,2);
-                             $day   = substr($date,6,2); //day number
+                             $day   = substr($date,6,2); //day number 01-31
+
                              $dayHTML = "$year-$month-$day";
                              $dateTime = new DateTime("$year/$month/$day");
                              ?>

@@ -1,5 +1,4 @@
 <?php
-//https://codepen.io/nxworld/pen/ZYNOBZ
 /**
  * List all files matching the pattern and returns an index by last modification time.
  * Array index are the day of file last modification date, and the value is the count of
@@ -14,7 +13,7 @@
  * Note that days are
  * @param  string $pattern glob pattern (e.g "/folder/*.txt")
  * @param  string $timezone the timezone to use to process the file date. If not
- * set, the default timezone will be used
+ * set, the default timezone will be used. More on timezone https://codepen.io/nxworld/pen/ZYNOBZ
  * @return array          day index array
  */
 function getIndexByDay($pattern, $timezone = null) {

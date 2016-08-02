@@ -10,7 +10,7 @@
  * )
  * @param  string $day      the day value in format yyyymmdd
  * @param  string $pattern  the file search pattern
- * @param  string $timezone timezone
+ * @param  string $timezone timezone (more on timezone https://codepen.io/nxworld/pen/ZYNOBZ)
  * @return array           list of files
  */
 function getFilesByDay($day, $pattern, $timezone = null)
