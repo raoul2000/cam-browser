@@ -66,7 +66,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                   foreach ($files as $filename => $filemtime)
                   {
                     $fileRelativePath = $config['folder'] .'/' . basename($filename);
-                    $encodedFilePath = urlencode($fileRelativePath);
+                    $encodedFilePath = urlencode(basename($filename));
 
                     $dateTime = new DateTime('@'.$filemtime);
                     if($config['timezone'] != null){
@@ -109,9 +109,12 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
           var btn = $(ev.target);
           console.log(btn.data('path'));
           if(confirm("Delete this file ? ")) {
-            alert('delete file  : not implemented');
-            $.get('delete-single-file.php' , { path: btn.data('path')},function(data){
-              console.log('success');
+            $.getJSON('delete-single-file.php' , { path: btn.data('path')},function(data){
+              if(data.error) {
+                alert('Error : '+data.message);
+              } else {
+                btn.closest('.col-md-4').hide('slow');
+              }
             });
           }
 
