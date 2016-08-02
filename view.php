@@ -66,6 +66,8 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                   foreach ($files as $filename => $filemtime)
                   {
                     $fileRelativePath = $config['folder'] .'/' . basename($filename);
+                    $encodedFilePath = urlencode($fileRelativePath);
+
                     $dateTime = new DateTime('@'.$filemtime);
                     if($config['timezone'] != null){
           						$dateTime->setTimezone(new DateTimeZone($config['timezone']));
@@ -76,7 +78,8 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                       <div class="col-md-4">
                         <div class="thumbnail">
                           <img src="<?= $fileRelativePath ?>" class="img-responsive clickable">
-                          <h4 class="text-center"><?= $dateFmt ?></h4>
+                          <button  type="button" class="btn btn-default btn-lg btn-delete" data-path="<?= $encodedFilePath ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                          <h4><?= $dateFmt ?></h4>
                         </div>
                       </div>
 
@@ -100,6 +103,18 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
         $('#btn-back').on('click',function(ev){
           $('#fullscreen').hide();
           $('#grid').show();
+        });
+
+        $('.btn-delete').on('click',function(ev){
+          var btn = $(ev.target);
+          console.log(btn.data('path'));
+          if(confirm("Delete this file ? ")) {
+            alert('delete file  : not implemented');
+            $.get('delete-single-file.php' , { path: btn.data('path')},function(data){
+              console.log('success');
+            });
+          }
+
         });
       })
     </script>
