@@ -25,6 +25,8 @@ $sampleFiles = [
   ]
 ];
 
+@mkdir($testFolder, 0755);
+
 foreach($sampleFiles as $file) {
   $destFile = $testFolder . '/' . $file['name'];
   copy($refFilename, $destFile);
