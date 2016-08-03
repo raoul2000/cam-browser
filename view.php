@@ -163,6 +163,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
         var progressBarDeleteMsg = $('#progress-delete-msg');
         var progressBar = $('#progress-delete-bar');
         var errorDeleteCount = 0;
+        var btnDeleteAll = $('#btn-delete-all');
 
          function callDeleteSingleFile(path, success, error, finish){
            return function(){
@@ -183,13 +184,13 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
            };
          }
 
-        $('#btn-delete-all').prop('disabled', false);
-        $('#btn-delete-all').on('click',function(ev){
+        btnDeleteAll.prop('disabled', false);
+        btnDeleteAll.on('click',function(ev){
           var date = $(ev.target).data('date');
           if( confirm("WARNING : you are about to delete all files for the date '"+date+"'.\nAre you sure ?")){
             errorDeleteCount = 0;
             progressBarDeleteWrapper.show();
-            $('#btn-delete-all').prop('disabled', true);
+            btnDeleteAll.prop('disabled', true);
 
             var btnList = $('.btn-delete');
             var base = $.when({});
@@ -203,11 +204,9 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                   thisButton.closest('.col-md-4').hide();
                   var percent = Math.floor(100 * (index+1) / btnList.length);
                   progressBar.css("width", percent + "%");
-                  console.log("success : "+path);
                 },
                 function(){
                   errorDeleteCount++;
-                  console.log("error : "+path);
                 },
                 function(){
                   if(index == btnList.length - 1) {
@@ -218,7 +217,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                       alert('All image have been deleted for this day.');
                       document.location="index.php";
                     } else {
-                      $('#btn-delete-all').prop('disabled', false);
+                      btnDeleteAll.prop('disabled', false);
                       setTimeout(function(){
                         progressBarDeleteWrapper.hide();
                         progressBar.css("width", "0px");
