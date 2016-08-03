@@ -167,7 +167,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
 
          function callDeleteSingleFile(path, success, error, finish){
            return function(){
-             progressBarDeleteMsg.text("deleting "+path);
+
              var defer = $.Deferred();
              $.getJSON('delete-single-file.php' , { "path": path}, function(data){
                if(data.error) {
@@ -197,12 +197,12 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
             btnList.each(function(index, button){
               var thisButton = $(button);
               var path = thisButton.data("path");
-
               base = base.then(callDeleteSingleFile(
                 path,
                 function(){
                   thisButton.closest('.col-md-4').hide();
                   var percent = Math.floor(100 * (index+1) / btnList.length);
+                  progressBarDeleteMsg.text( ""+percent+"%");
                   progressBar.css("width", percent + "%");
                 },
                 function(){
@@ -210,7 +210,6 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                 },
                 function(){
                   if(index == btnList.length - 1) {
-                    console.log(errorDeleteCount);
                     if(errorDeleteCount == 0){
                       $('#grid').hide();
                       progressBarDeleteWrapper.hide();
