@@ -35,6 +35,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
     <div class="section">
 
         <div class="container">
+            <!-- HEADER -->
             <div id="header" class="row">
                 <div class="col-md-12">
                     <ul class="breadcrumb lead">
@@ -50,6 +51,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                 </div>
             </div>
 
+            <!-- FULLSCREEN IMAGE VIEW -->
             <div id="fullscreen" class="row" style="display:none;">
               <div class="col-md-12">
                 <button id="btn-back" type="button" class="btn btn-primary btn-block">Close</button>
@@ -57,25 +59,34 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                 <img id="img-fullscreen" src="" class="img-responsive">
               </div>
             </div>
-            <div class="row">
+
+            <!-- TOOLBAR -->
+            <div id="toolbar" class="row">
               <div class="col-lg-12">
                 <div class="clearfix">
-
-                <div class="btn-toolbar pull-right" role="toolbar" aria-label="...">
-                  <div class="btn-group " role="group" aria-label="...">
-                    <button  id="btn-back-to-index" type="button" class="btn btn-default">
-                      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back To Hall
-                    </button>
-                    <button id="btn-delete-all" type="button" class="btn btn-danger" data-date="<?= $date ?>">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete All
-                    </button>
+                  <div class="btn-toolbar pull-right" role="toolbar" aria-label="...">
+                    <div class="btn-group " role="group" aria-label="...">
+                      <button  id="btn-back-to-index" type="button" class="btn btn-default">
+                        <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> Back To Hall
+                      </button>
+                      <button id="btn-delete-all" type="button" class="btn btn-danger" data-date="<?= $date ?>">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete All
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <hr/>
+              </div>
+              <div id="wrap-progress-delete-bar" class="col-lg-12" style="display:none">
+                <div class="progress">
+                  <div id="progress-delete-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    <span id="progress-delete-msg"></span>
                   </div>
                 </div>
               </div>
-              <hr/>
-              </div>
-
             </div>
+
+            <!-- IMAGE GRID -->
             <div id="grid" class="row">
               <?php
                 if( count($files) === 0) {
@@ -143,16 +154,62 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
         /**
          * Delete all files having last modified date equal to the current date being displayed
          */
+        var progressBarDeleteWrapper = $('#wrap-progress-delete-bar');
+        var progressBarDeleteMsg = $('#progress-delete-msg');
+        var progressBar = $('#progress-delete-bar');
+
+         function callDeleteSingleFile(path, percent, doAfter){
+           return function(){
+             // wrap with a deferred
+             var defer = $.Deferred();
+             progressBarDeleteMsg.text("deleting "+path);
+             console.log("deleting file "+path+" ...");
+             $.getJSON('delete-single-file.php' , { "path": path}, function(data){
+               if(data.error) {
+                 console.log("file = "+path+' Error : '+data.message);
+               } else {
+                 console.log("file = "+path+' success : '+data.message);
+               }
+             })
+             .done(function(){
+               progressBar.css("width", percent + "%");
+               if( doAfter ) {
+                 $('#btn-delete-all').prop('disabled', false);
+                 setTimeout(function(){
+                   progressBarDeleteWrapper.hide();
+                 },500);
+               }
+               defer.resolve();
+             });
+             // return a promise so that we can chain properly in the each
+             return defer.promise();
+           };
+         }
+
         $('#btn-delete-all').on('click',function(ev){
           var date = $(ev.target).data('date');
           if( confirm("WARNING : you are about to delete all files for the date '"+date+"'.\nAre you sure ?")){
-            $.getJSON('delete-all-files.php' , { "date": date },function(data){
-              if(data.error) {
-                alert('Error : '+data.message);
-              } else {
-                btn.closest('.col-md-4').hide('slow');
-              }
+            progressBarDeleteWrapper.show();
+            $('#btn-delete-all').prop('disabled', true);
+
+            var pathList = $.map($('.btn-delete'),function(item){
+              return $(item).data('path');
             });
+
+            if(pathList.length != 0) {
+              // this will trigger the first callback.
+              var progress = 0;
+              progressBar.css("width", progress + "%");
+
+              var base = $.when({});
+              $.each(pathList, function(index, onePath){
+                  base = base.then(callDeleteSingleFile(
+                    onePath,
+                    Math.floor(100 * (index+1) / pathList.length),
+                    index == pathList.length - 1
+                  ));
+              });
+            }
           }
         });
 
@@ -160,7 +217,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
          * Navigates to the previous index page
          */
         $('#btn-back-to-index').on('click',function(ev){
-          // TODO : implement me !
+          document.location = "index.php";
         });
       })
     </script>

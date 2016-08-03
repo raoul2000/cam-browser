@@ -3,7 +3,7 @@ require_once('config.php');
 
 // very basic script that deletes the file whose name is received as
 // a request GET parameter ('path') assumed to be urlencoded.
-// 
+//
 // Returns a JSON response with the following format :
 // success :
 // {
@@ -17,7 +17,7 @@ require_once('config.php');
 //  "message" : "the error message here"
 // }
 //
-
+sleep(1);
 if ( ! isset($_GET['path'])) {
   $result = [
     'error' => true,
@@ -30,7 +30,7 @@ if ( ! isset($_GET['path'])) {
       'error' => true,
       'message' => 'file not found : '
     ];
-  } else if (  ! unlink($fullpath) ) {
+  } else if (  true  ) { // ! unlink($fullpath)
     # code...
     $result = [
       'error' => true,
