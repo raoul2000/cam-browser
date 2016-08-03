@@ -37,3 +37,7 @@ div.thumbnail:hover {
   float: left;
   padding-left: 10px;
 }
+
+.chk-date {
+  margin-right:10px;
+}

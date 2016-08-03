@@ -55,7 +55,8 @@ $days = getIndexByDay($folder, $timezone );
                              ?>
 
                                <a href="view.php?date=<?= $date ?>" class="list-group-item">
-                                 <span class="day"><?= $dayHTML ?></span>
+                                 <!--input class="chk-date" type="checkbox" name="name" value=""-->
+                                 <span class="day"> <?= $dayHTML ?></span>
                                  <span class="badge day"><?= $countFiles ?></span>
                                </a>
 
@@ -68,5 +69,14 @@ $days = getIndexByDay($folder, $timezone );
              </div>
          </div>
      </div>
+     <script type="text/javascript">
+       $(function() {
+         $('.chk-date').on('click',function(ev){
+           ev.stopPropagation();
+           ev.stopImmediatePropagation();
+           return false;
+         });
+       });
+     </script>
  </body>
  </html>
