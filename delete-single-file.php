@@ -30,7 +30,7 @@ if ( ! isset($_GET['path'])) {
       'error' => true,
       'message' => 'file not found : '
     ];
-  } else if (  true  ) { // ! unlink($fullpath)
+  } else if (  false  ) { // ! unlink($fullpath)
     # code...
     $result = [
       'error' => true,

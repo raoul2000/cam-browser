@@ -107,7 +107,12 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                       <div class="col-md-4">
                         <div class="thumbnail">
                           <img src="<?= $fileRelativePath ?>" class="img-responsive clickable">
-                          <button  type="button" class="btn btn-default btn-lg btn-delete" data-path="<?= $encodedFilePath ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                          <button
+                            type="button"
+                            class="btn btn-default btn-lg btn-delete"
+                            data-path="<?= $encodedFilePath ?>">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                          </button>
                           <h4><?= $dateFmt ?></h4>
                         </div>
                       </div>
@@ -158,30 +163,21 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
         var progressBarDeleteMsg = $('#progress-delete-msg');
         var progressBar = $('#progress-delete-bar');
 
-         function callDeleteSingleFile(path, percent, doAfter){
+         function callDeleteSingleFile(path, success, error, finish){
            return function(){
-             // wrap with a deferred
-             var defer = $.Deferred();
              progressBarDeleteMsg.text("deleting "+path);
-             console.log("deleting file "+path+" ...");
+             var defer = $.Deferred();
              $.getJSON('delete-single-file.php' , { "path": path}, function(data){
                if(data.error) {
-                 console.log("file = "+path+' Error : '+data.message);
+                 error();
                } else {
-                 console.log("file = "+path+' success : '+data.message);
+                 success();
                }
              })
              .done(function(){
-               progressBar.css("width", percent + "%");
-               if( doAfter ) {
-                 $('#btn-delete-all').prop('disabled', false);
-                 setTimeout(function(){
-                   progressBarDeleteWrapper.hide();
-                 },500);
-               }
+               finish();
                defer.resolve();
              });
-             // return a promise so that we can chain properly in the each
              return defer.promise();
            };
          }
@@ -192,24 +188,33 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
             progressBarDeleteWrapper.show();
             $('#btn-delete-all').prop('disabled', true);
 
-            var pathList = $.map($('.btn-delete'),function(item){
-              return $(item).data('path');
+            var btnList = $('.btn-delete');
+            var base = $.when({});
+            btnList.each(function(index, button){
+              var path = $(button).data("path");
+
+              base = base.then(callDeleteSingleFile(
+                path,
+                function(){
+                  button.closest('.col-md-4').hide('slow');
+                  var percent = Math.floor(100 * (index+1) / btnList.length);
+                  progressBar.css("width", percent + "%");
+                  console.log("success : "+path);
+                },
+                function(){
+                  console.log("error : "+path);
+                },
+                function(){
+                  if(index == btnList.length - 1) {
+                    $('#btn-delete-all').prop('disabled', false);
+                    setTimeout(function(){
+                      progressBarDeleteWrapper.hide();
+                      progressBar.css("width", "0px");
+                    },500);
+                  }
+                }
+              ));
             });
-
-            if(pathList.length != 0) {
-              // this will trigger the first callback.
-              var progress = 0;
-              progressBar.css("width", progress + "%");
-
-              var base = $.when({});
-              $.each(pathList, function(index, onePath){
-                  base = base.then(callDeleteSingleFile(
-                    onePath,
-                    Math.floor(100 * (index+1) / pathList.length),
-                    index == pathList.length - 1
-                  ));
-              });
-            }
           }
         });
 
