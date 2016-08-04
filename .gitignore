@@ -1,2 +1,6 @@
+*.log
+deployment.ini
 test/data-sample/**
 .htaccess
+
+/vendor/
