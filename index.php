@@ -3,6 +3,8 @@
 require_once('lib/browse-folder.php');
 require_once('config.php');
 
+// TODO : test configuration is valid
+
 $folder = __DIR__ . '/' . $config['folder'] . '/' . $config['filePattern'];
 $timezone = isset($config['timezone']) && ! empty($config['timezone'])
   ? $config['timezone']
