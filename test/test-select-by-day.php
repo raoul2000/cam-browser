@@ -33,20 +33,6 @@ foreach($sampleFiles as $file) {
   touch( $destFile, strtotime($file['mtime']));
 }
 
-// perform test getIndexByDay
-require_once('../lib/browse-folder.php');
-$result = getIndexByDay("$testFolder/*.jpg", $timezone );
-//print_r($result);
-if( count($result) != 2 ||
-    $result['20160128'] != 3 ||
-    $result['20151201'] != 1  ) {
-      echo "error";
-    } else {
-      echo "success";
-    }
-
-echo "\n";
-
 // perform test getFilesByDay
 require_once('../lib/select-by-day.php');
 $result = getFilesByDay("20160128", "$testFolder/*.jpg", $timezone );
