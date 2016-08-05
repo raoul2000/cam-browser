@@ -59,7 +59,8 @@ $days = getIndexByDay($folder, $timezone );
                                <a href="view-image.php?date=<?= $date ?>" class="list-group-item">
                                  <!--input class="chk-date" type="checkbox" name="name" value=""-->
                                  <span class="day"> <?= $dayHTML ?></span>
-                                 <span class="badge day"><?= $countFiles ?></span>
+                                 <span class="badge alert-info  day"><?= $countFiles ?></span>
+                                 <!--span class="badge alert-warning day">0</span-->
                                </a>
 
                              <?php

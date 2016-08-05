@@ -126,7 +126,9 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
     </div>
     <script type="text/javascript">
       $(function() {
+
         $('img.clickable').on('click',function(ev){
+          // TODO : when showing fillscreen image, hide the toolbar
           var $img = $(ev.target);
           console.log($img.attr('src'));
           $('#img-fullscreen').attr('src', $img.attr('src'));
