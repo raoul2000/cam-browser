@@ -1,0 +1,2 @@
+@ECHO OFF
+vendor/bin/deployment.bat deploy/environment.ini
