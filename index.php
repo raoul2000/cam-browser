@@ -56,7 +56,7 @@ $days = getIndexByDay($folder, $timezone );
                              $dateTime = new DateTime("$year/$month/$day");
                              ?>
 
-                               <a href="view.php?date=<?= $date ?>" class="list-group-item">
+                               <a href="view-image.php?date=<?= $date ?>" class="list-group-item">
                                  <!--input class="chk-date" type="checkbox" name="name" value=""-->
                                  <span class="day"> <?= $dayHTML ?></span>
                                  <span class="badge day"><?= $countFiles ?></span>
