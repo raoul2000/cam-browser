@@ -24,3 +24,7 @@ cp deploy\environment.conf.example deploy\stage.ini
 - update your `deploy\stage.ini` file
 - generate the deployment scripts `deploy\create.php stage`
 - start deployment with `deploy\stage`
+
+## TODO
+
+- rebuild using Yii2 framework
