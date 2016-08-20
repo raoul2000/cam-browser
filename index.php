@@ -5,12 +5,28 @@ require_once('config.php');
 
 // TODO : test configuration is valid
 
-$folder = __DIR__ . '/' . $config['folder'] . '/' . $config['filePattern'];
+$folder = __DIR__ . '/' . $config['folderImg'] . '/' . $config['imageFilePattern'];
 $timezone = isset($config['timezone']) && ! empty($config['timezone'])
   ? $config['timezone']
   : null;
 
-$days = getIndexByDay($folder, $timezone );
+$daysImg = getIndexByDay($folder, $timezone );
+
+$folder = __DIR__ . '/' . $config['folderVideo'] . '/' . $config['videoFilePattern'];
+$daysVideo = getIndexByDay($folder, $timezone );
+
+// merge image and video arrays
+// 
+$days = $daysImg;
+foreach ($daysVideo as $date => $count) {
+  if(isset($days[$date])) {
+    $days[$date] = $days[$date] . '-' . $count;
+  } else {
+    $days[$date] = '0-' . $count;
+  }
+}
+//var_dump($days);
+
 
  ?><!DOCTYPE html>
  <html>
@@ -45,9 +61,11 @@ $days = getIndexByDay($folder, $timezone );
                          if( count($days) == 0 ) {
                            // this should never occur as an empty folder should not be
                            // listed in the image index page
-                           echo "<p>no image found</p>";
+                           echo "<p>no file found</p>";
                          } else {
                            foreach ($days as $date => $countFiles) {
+                             list($countImg, $countVideo) = explode('-',$countFiles);
+
                              $year  = substr($date,0,4);
                              $month = substr($date,4,2);
                              $day   = substr($date,6,2); //day number 01-31
@@ -59,7 +77,8 @@ $days = getIndexByDay($folder, $timezone );
                                <a href="view-image.php?date=<?= $date ?>" class="list-group-item">
                                  <!--input class="chk-date" type="checkbox" name="name" value=""-->
                                  <span class="day"> <?= $dayHTML ?></span>
-                                 <span class="badge alert-info  day"><?= $countFiles ?></span>
+                                 <span class="badge alert-info  day"><?= $countImg ?></span>
+                                 <span class="badge alert-info  day"><?= $countVideo ?></span>
                                  <!--span class="badge alert-warning day">0</span-->
                                </a>
 
