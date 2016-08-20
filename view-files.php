@@ -50,7 +50,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                         <li>
                             <a href="index.php">Hall</a>
                         </li>
-                        <li class="active"><?= $date ?> <small class="text-muted"><?= count($files) ?> image(s)</small></li>
+                        <li class="active"><?= $date ?></li>
                     </ul>
                     <hr/>
                 </div>
@@ -137,7 +137,9 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                         <div class="col-md-4">
                           <div class="thumbnail">
                             <div class="video">
-                              video
+                              <a href="download.php?file=<?= $fileRelativePath ?>">
+                                <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Video
+                              </a>
                             </div>
                             <button
                             type="button"
