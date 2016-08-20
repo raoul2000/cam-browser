@@ -13,16 +13,17 @@ composer install
 
 ## Deploy FTP
 
-FTP deployment is managed by [ftp deployment](https://github.com/dg/ftp-deployment).
+FTP deployment is managed by [ftp deployment](https://github.com/dg/ftp-deployment) which is included
+in the *composer* dependencies.
 
 To setup a *stage* deployment process :
 
 - duplicate the environment configuration file :
 ```
-cp deploy\environment.conf.example deploy\stage.ini
+cp deploy\environment.conf.example deploy\stage.conf
 ```
-- update your `deploy\stage.ini` file
-- generate the deployment scripts `deploy\create.php stage`
+- update your `deploy\stage.conf` file
+- generate the deployment scripts with `php deploy\create.php stage`
 - start deployment with `deploy\stage`
 
 ## TODO
