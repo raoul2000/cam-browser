@@ -28,27 +28,23 @@ $sampleImages = [
 
 $sampleVideo = [
   [
-    'name' => "file1.jpg",
+    'name' => "file1.mkv",
     'mtime' => "2016/01/28 17:23"
   ],
   [
-    'name' => "file2.jpg",
+    'name' => "file2.mkv",
     'mtime' => "2016/01/28 12:30"
   ],
   [
-    'name' => "file2a.jpg",
+    'name' => "file2a.mkv",
     'mtime' => "2016/01/28 21:30"
   ],
   [
-    'name' => "file3.jpg",
-    'mtime' => "2015/12/01 22:54"
-  ],
-  [
-    'name' => "file4.jpg",
+    'name' => "file4.mkv",
     'mtime' => "2015/11/01 22:54"
   ],
   [
-    'name' => "file5.jpg",
+    'name' => "file5.mkv",
     'mtime' => "2015/11/01 22:54"
   ]
 ];

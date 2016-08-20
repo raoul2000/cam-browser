@@ -16,7 +16,7 @@ $folder = __DIR__ . '/' . $config['folderVideo'] . '/' . $config['videoFilePatte
 $daysVideo = getIndexByDay($folder, $timezone );
 
 // merge image and video arrays
-// 
+//
 $days = $daysImg;
 foreach ($daysVideo as $date => $count) {
   if(isset($days[$date])) {
@@ -25,8 +25,13 @@ foreach ($daysVideo as $date => $count) {
     $days[$date] = '0-' . $count;
   }
 }
-//var_dump($days);
+foreach ($days as $date => $value) {
+  if( is_integer($value)){
+    $days[$date] = $days[$date] . '-0';
 
+  }
+}
+//var_dump($days);
 
  ?><!DOCTYPE html>
  <html>
@@ -74,7 +79,7 @@ foreach ($daysVideo as $date => $count) {
                              $dateTime = new DateTime("$year/$month/$day");
                              ?>
 
-                               <a href="view-image.php?date=<?= $date ?>" class="list-group-item">
+                               <a href="view-files.php?date=<?= $date ?>" class="list-group-item">
                                  <!--input class="chk-date" type="checkbox" name="name" value=""-->
                                  <span class="day"> <?= $dayHTML ?></span>
                                  <span class="badge alert-info  day"><?= $countImg ?></span>

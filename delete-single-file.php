@@ -24,13 +24,13 @@ if ( ! isset($_GET['path'])) {
     'message' => 'invalid request'
   ];
 } else {
-  $fullpath = $config['folder'] .'/'. urldecode($_GET['path']);
+  $fullpath =  urldecode($_GET['path']);
   if ( ! file_exists($fullpath)) {
     $result = [
       'error' => true,
       'message' => 'file not found : '
     ];
-  } else if (  false  ) { // ! unlink($fullpath)
+  } else if (  ! unlink($fullpath)  ) { // ! unlink($fullpath)
     # code...
     $result = [
       'error' => true,
