@@ -106,7 +106,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                     if($config['timezone'] != null){
                       $dateTime->setTimezone(new DateTimeZone($config['timezone']));
                     }
-                    $dateFmt = $dateTime->format("D j Y - H:i:s");
+                    $dateFmt = $dateTime->format("H:i:s");
 
                     if( $isImage) {
 
