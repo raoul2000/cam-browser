@@ -16,7 +16,7 @@ ignore = "
 	.git*
 	*.log
 	/vendor
-	/test
+	/explorer/test
 	/deploy/*.ini
 	/deploy/*.conf
 	/deploy/*.bat
@@ -28,7 +28,7 @@ ignore = "
 	/log
 	temp/*
 	.htaccess
-	/lib/.htpasswd
+	/explorer/lib/.htpasswd
 "
 ; is allowed to delete remote files? (defaults to yes)
 allowDelete = yes

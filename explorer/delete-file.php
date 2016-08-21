@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('../config.php');
 
 // very basic script that deletes the file whose name is received as
 // a request GET parameter ('path') assumed to be urlencoded.

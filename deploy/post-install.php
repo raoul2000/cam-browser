@@ -1,8 +1,8 @@
 <?php
 
 
-$autPwdFilename= realpath('../lib') . '/.htpasswd';
-$htaccessFilename= realpath('..') . '/.htaccess';
+$autPwdFilename= realpath('explorer/lib') . '/.htpasswd';
+$htaccessFilename= realpath('explorer') . '/.htaccess';
 
 if( ! file_exists($autPwdFilename)  ) {
   echo ".htpasswd file nout found in ../lib : creating ...<br/>";

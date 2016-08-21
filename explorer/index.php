@@ -1,7 +1,7 @@
 <?php
 
 require_once('lib/browse-folder.php');
-require_once('config.php');
+require_once('../config.php');
 
 // TODO : test configuration is valid
 

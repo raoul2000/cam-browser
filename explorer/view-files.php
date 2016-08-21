@@ -1,6 +1,6 @@
 <?php
 
-require_once('config.php');
+require_once('../config.php');
 
 $folder = $config['baseFolder'] . '/' . $config['folderImg'] . '/' . $config['imageFilePattern'];
 $timezone = isset($config['timezone']) && ! empty($config['timezone'])

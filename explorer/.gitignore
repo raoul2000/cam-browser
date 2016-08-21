@@ -1,0 +1,7 @@
+*.log
+deploy/*.ini
+deploy/*.bat
+deploy/*.conf
+test/data-sample/**
+.htaccess
+/vendor/
