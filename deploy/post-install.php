@@ -22,8 +22,13 @@ if( ! file_exists($autPwdFilename)  ) {
   ."AuthUserFile $autPwdFilename\n"
   ."Require valid-user";
 
-  echo "updating file $htaccessFilename<br/>";
+  echo "updating file $htaccessFilename\n";
   file_put_contents($htaccessFilename,$htaccessContent);
-  @unlink(_FILE_);
+  if( unlink(__FILE__) === false){
+    echo "ERROR : failed to delete file " . __FILE__. "\n";
+  } else {
+    echo "deleting deploy folder\n";
+    rmdir(__DIR__);
+  }
   echo "(weak) Protection enabled";
 ?>
