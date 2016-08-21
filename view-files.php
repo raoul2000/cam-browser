@@ -137,8 +137,9 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                         <div class="col-md-4">
                           <div class="thumbnail">
                             <div class="video">
-                              <a href="download.php?file=<?= $fileRelativePath ?>">
-                                <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> Video
+                              <!-- a href="download.php?file=<?= $fileRelativePath ?>" -->
+                              <a href="<?= $fileRelativePath ?>" target="_blank" title="play video in a new window">
+                                <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Video
                               </a>
                             </div>
                             <button

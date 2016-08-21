@@ -82,8 +82,14 @@ foreach ($days as $date => $value) {
                                <a href="view-files.php?date=<?= $date ?>" class="list-group-item">
                                  <!--input class="chk-date" type="checkbox" name="name" value=""-->
                                  <span class="day"> <?= $dayHTML ?></span>
-                                 <span class="badge alert-info  day"><?= $countImg ?></span>
-                                 <span class="badge alert-info  day"><?= $countVideo ?></span>
+                                 <span class="badge alert-info  day">
+                                   <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                                   <?= $countImg ?>
+                                 </span>
+                                 <span class="badge alert-info  day">
+                                   <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+                                   <?= $countVideo ?>
+                                 </span>
                                  <!--span class="badge alert-warning day">0</span-->
                                </a>
 
