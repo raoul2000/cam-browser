@@ -185,7 +185,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
           var btn = $(ev.target);
           console.log(btn.data('path'));
           if(confirm("Delete this file ? ")) {
-            $.getJSON('delete-single-file.php' , { path: btn.data('path')},function(data){
+            $.getJSON('delete-file.php' , { path: btn.data('path')},function(data){
               if(data.error) {
                 alert('Error : '+data.message);
               } else {
@@ -208,7 +208,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
            return function(){
 
              var defer = $.Deferred();
-             $.getJSON('delete-single-file.php' , { "path": path}, function(data){
+             $.getJSON('delete-file.php' , { "path": path}, function(data){
                if(data.error) {
                  error();
                } else {
