@@ -2,6 +2,7 @@
 
 $config = [
   'baseFolder' => __DIR__,
+  'baseUrl'    => '.',
   // name of the folder where images are located. It must be relative
   // to the current folder
   'folderImg' => "test/data-sample/images",

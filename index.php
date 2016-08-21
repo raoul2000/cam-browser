@@ -12,7 +12,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
 
 $daysImg = getIndexByDay($folder, $timezone );
 
-$folder = __DIR__ . '/' . $config['folderVideo'] . '/' . $config['videoFilePattern'];
+$folder = $config['baseFolder']  . '/' . $config['folderVideo'] . '/' . $config['videoFilePattern'];
 $daysVideo = getIndexByDay($folder, $timezone );
 
 // merge image and video arrays

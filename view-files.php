@@ -15,11 +15,13 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
     echo "mising date argument";
     exit(1);
   }
+  $baseUrl = $config['baseUrl'];
+
   require_once('lib/select-by-day.php');
 
   $filesImage = getFilesByDay($date , $folder , $timezone);
 
-  $folder = __DIR__ . '/' . $config['folderVideo'] . '/' . $config['videoFilePattern'];
+  $folder = $config['baseFolder']  . '/' . $config['folderVideo'] . '/' . $config['videoFilePattern'];
   $filesVideo = getFilesByDay($date , $folder , $timezone);
 
   $files = array_merge($filesImage, $filesVideo);
@@ -116,7 +118,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
 
                       <div class="col-md-4">
                         <div class="thumbnail">
-                          <img src="<?= $fileRelativePath ?>" class="img-responsive clickable">
+                          <img src="<?=  $baseUrl .'/'. $fileRelativePath ?>" class="img-responsive clickable">
                           <button
                           type="button"
                           class="btn btn-default btn-lg btn-delete"
@@ -138,7 +140,7 @@ $timezone = isset($config['timezone']) && ! empty($config['timezone'])
                           <div class="thumbnail">
                             <div class="video">
                               <!-- a href="download.php?file=<?= $fileRelativePath ?>" -->
-                              <a href="<?= $fileRelativePath ?>" target="_blank" title="play video in a new window">
+                              <a href="<?=  $baseUrl .'/'. $fileRelativePath ?>" target="_blank" title="play video in a new window">
                                 <span class="glyphicon glyphicon-film" aria-hidden="true"></span> Video
                               </a>
                             </div>
