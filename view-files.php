@@ -2,7 +2,7 @@
 
 require_once('config.php');
 
-$folder = __DIR__ . '/' . $config['folderImg'] . '/' . $config['imageFilePattern'];
+$folder = $config['baseFolder'] . '/' . $config['folderImg'] . '/' . $config['imageFilePattern'];
 $timezone = isset($config['timezone']) && ! empty($config['timezone'])
   ? $config['timezone']
   : null;

@@ -1,6 +1,7 @@
 <?php
 
 $config = [
+  'baseFolder' => __DIR__,
   // name of the folder where images are located. It must be relative
   // to the current folder
   'folderImg' => "test/data-sample/images",
