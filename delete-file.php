@@ -24,28 +24,28 @@ if ( ! isset($_GET['path'])) {
     'message' => 'invalid request'
   ];
 } else {
-  $fullpath =  urldecode($_GET['path']);
+
+  $path = urldecode($_GET['path']);
+  $fullpath =  $config['baseFolder'] . '/' . str_replace('..','',$path);
+
   if ( ! file_exists($fullpath)) {
     $result = [
       'error' => true,
-      'message' => 'file not found : '
+      'message' => 'file not found : ' . $path
     ];
   } else if (  ! unlink($fullpath)  ) { // ! unlink($fullpath)
     # code...
     $result = [
       'error' => true,
-      //'message' => 'file ' . $fullpath . ' deleted'
-      'message' => 'failed to delete file'
+      'message' => 'failed to delete file : ' . $path
     ];
   } else {
     $result = [
       'error' => false,
-      //'message' => 'file ' . $fullpath . ' deleted'
-      'message' => 'file  deleted'
+      'message' => 'file deleted : ' . $path
     ];
   }
 }
-
 
 header('Content-type: application/json');
 echo json_encode($result);
