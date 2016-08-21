@@ -24,5 +24,6 @@ if( ! file_exists($autPwdFilename)  ) {
 
   echo "updating file $htaccessFilename<br/>";
   file_put_contents($htaccessFilename,$htaccessContent);
+  @unlink(_FILE_);
   echo "(weak) Protection enabled";
 ?>

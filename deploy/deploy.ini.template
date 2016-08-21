@@ -20,7 +20,9 @@ ignore = "
 	/deploy/*.ini
 	/deploy/*.conf
 	/deploy/*.bat
-	/design/*.html
+	/deploy/*.example
+	/deploy/*.template
+	/deploy/create.php
 	composer.*
 	/deployment.*
 	/log
