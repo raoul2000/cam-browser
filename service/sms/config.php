@@ -1,5 +1,10 @@
 <?php
 
+// define your own configuration or use the one belonging to the cam-browser
+// project.
+//
+require_once('../../config.php');
+/*
 $config = [
   'baseFolder' => __DIR__,
   'baseUrl'    => 'http://localhost/dev/cam-browser',
@@ -25,3 +30,4 @@ $config = [
   // url shortener Service key
   'google-apikey' => 'XXXXX-XXXXX'
 ];
+*/
