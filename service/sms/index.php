@@ -43,7 +43,8 @@ if( ! file_exists($dataFile)){
     $date = new DateTime("@".$newTs);
     $date->setTimezone(new DateTimeZone($config['timezone']));
     $timeStr = $date->format('H:i');  // Berlin time
-    $imageUrl = $config['baseUrl'] . '/' . $config['folderImg'] . '/' . basename($latest_file);
+    //$imageUrl = $config['baseUrl'] . '/' . $config['folderImg'] . '/' . basename($latest_file);
+    $imageUrl = $config['viewImageUrl'] . '?file=' . basename($latest_file);
     echo "image url = $imageUrl<br/>";
 
   	// invoking URL shortener
@@ -65,7 +66,7 @@ if( ! file_exists($dataFile)){
     try {
 
       $fms = new FreemobileNotificationSender($config['sms-userid'],$config['sms-apikey']);
-      $fms->sendMessage($message);
+      //$fms->sendMessage($message);
       echo "SMS OK<br/>";
 
     } catch (Exception $e) {

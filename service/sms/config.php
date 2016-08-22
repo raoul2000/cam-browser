@@ -4,6 +4,9 @@
 // project.
 //
 require_once('../../config.php');
+$config['explorerUrl'] = "http://localhost/dev/cam-browser/explorer/";
+$config['viewImageUrl'] = "http://localhost/dev/cam-browser/service/sms/view-image.php/";
+
 /*
 $config = [
   'baseFolder' => __DIR__,
