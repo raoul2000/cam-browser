@@ -4,7 +4,13 @@
 // project.
 //
 require_once('../../config.php');
+
+// inject some specific configuration settings into the global config
+// Url of the image browser page
 $config['explorerUrl'] = "http://localhost/dev/cam-browser/explorer/";
+
+// Url of a page displaying the image that triggered the alert. This page includes
+// a link to the Image Browser Page
 $config['viewImageUrl'] = "http://localhost/dev/cam-browser/service/sms/view-image.php/";
 
 /*
