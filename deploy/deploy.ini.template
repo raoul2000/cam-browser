@@ -29,6 +29,9 @@ ignore = "
 	temp/*
 	.htaccess
 	/explorer/lib/.htpasswd
+	/service/sms/*.dta
+	/service/sms/*.log
+	/service/sms/test
 "
 ; is allowed to delete remote files? (defaults to yes)
 allowDelete = yes
