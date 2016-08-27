@@ -68,7 +68,7 @@ if( ! file_exists($dataFile)){
       try {
 
         $fms = new FreemobileNotificationSender($dest['sms-userid'],$dest['sms-apikey']);
-        //$fms->sendMessage($message);
+        $fms->sendMessage($message);
         echo "SMS OK to ".$dest['sms-userid']."<br/>";
 
       } catch (Exception $e) {
