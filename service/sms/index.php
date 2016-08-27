@@ -1,5 +1,7 @@
 <?php
 require("config.php");
+$configSms = $config['service-sms'];
+//var_dump($configSms);
 
 $dataFile = "latest-file.dta";
 
@@ -42,16 +44,16 @@ if( ! file_exists($dataFile)){
     //
     $date = new DateTime("@".$newTs);
     $date->setTimezone(new DateTimeZone($config['timezone']));
-    $timeStr = $date->format('H:i');  // Berlin time
+    $timeStr = $date->format('H:i');
     //$imageUrl = $config['baseUrl'] . '/' . $config['folderImg'] . '/' . basename($latest_file);
-    $imageUrl = $config['viewImageUrl'] . '?file=' . basename($latest_file);
+    $imageUrl = $configSms['viewImageUrl'] . '?file=' . basename($latest_file);
     echo "image url = $imageUrl<br/>";
 
   	// invoking URL shortener
   	//
   	require_once('lib/GoogleUrlApi.php');
 
-  	$googer = new GoogleURLAPI($config['google-apikey']);
+  	$googer = new GoogleURLAPI($configSms['google-apikey']);
   	$shortDWName = $googer->shorten($imageUrl);
 
   	// building final SMS message
@@ -62,17 +64,18 @@ if( ! file_exists($dataFile)){
     // sending SMS
     //
     require("lib/FreemobileNotificationSender.php");
+    foreach ($configSms['destinations'] as $key => $dest) {
+      try {
 
-    try {
+        $fms = new FreemobileNotificationSender($dest['sms-userid'],$dest['sms-apikey']);
+        //$fms->sendMessage($message);
+        echo "SMS OK to ".$dest['sms-userid']."<br/>";
 
-      $fms = new FreemobileNotificationSender($config['sms-userid'],$config['sms-apikey']);
-      //$fms->sendMessage($message);
-      echo "SMS OK<br/>";
-
-    } catch (Exception $e) {
-      $errMsg = "erreur : ".$e->getMessage(). " code = ". $e->getCode();
-      echo "SMS ERROR = $errMsg<br/>";
-      file_put_contents("sms-error.log", $errMsg);
+      } catch (Exception $e) {
+        $errMsg = "erreur for userid = ".$dest['sms-userid']." : ".$e->getMessage(). " code = ". $e->getCode();
+        echo "SMS ERROR = $errMsg<br/>";
+        file_put_contents("sms-error.log", $errMsg);
+      }
     }
   }
 }

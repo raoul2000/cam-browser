@@ -1,6 +1,8 @@
 <?php
 
 require_once('config.php');
+$configSms = $config['service-sms'];
+
 if( !isset($_GET['file'])){
   exit(0);
 }
@@ -27,7 +29,7 @@ $fileUrl =  $config['baseUrl'] . '/' . $config['folderImg'] . '/' . $file;
 
            <div class="row">
              <div class="col-md-12" style="padding-top:10px">
-               <a href="<?= $config['explorerUrl'] ?>" class="btn btn-primary btn-block">Go To Explorer</a>
+               <a href="<?= $configSms['explorerUrl'] ?>" class="btn btn-primary btn-block">Go To Explorer</a>
                <hr/>
                <img id="img-fullscreen" src="<?= $fileUrl ?>" class="img-responsive">
              </div>

@@ -15,13 +15,5 @@ $config = [
 
   // timezone adjustment applied to the file last modification date
   // timezone support in php : http://php.net/manual/fr/timezones.php
-  'timezone' => "Pacific/Chatham",
-
-  // following parameters are only required by the service/SMS alerter.
-  // SMS service provided by free.Fr
-  "sms-userid" => 'XXXXXX',
-  'sms-apikey' => 'XXXXXXXX',
-
-  // url shortener Service key
-  'google-apikey' => 'XXXXX-XXXXX'
+  'timezone' => "Pacific/Chatham"
 ];
