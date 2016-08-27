@@ -1,11 +1,14 @@
 <?php
 
 $config = [
+  // this is the base folder where images/video files are saved
   'baseFolder' => __DIR__ . '/explorer',
+
+  // This is the base URL used to preview images/vdeo files
   'baseUrl'    => 'http://localhost/dev/cam-browser/explorer',
 
-  // name of the folder where images are located. It must be relative
-  // to the current folder
+  // name of the folder where images/video are located. It must be relative
+  // to the base folder parameter configured above.
   'folderImg'   => "test/data-sample/images",
   'folderVideo' => "test/data-sample/video",
 
