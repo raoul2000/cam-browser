@@ -11,6 +11,7 @@ I had to install an [IP camera](http://www.foscam.com/) some weeks ago and among
 - [x] manual delete selected image and video
 - [x] manual delete image and video per date
 - [x] sms notification on movement detection [free.Fr](http://www.free.fr) only
+- [x] automatics purge files
 - [ ] manage more than one single home camera
 
 ## Requirements
