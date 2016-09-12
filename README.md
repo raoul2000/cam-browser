@@ -16,7 +16,17 @@ I had to install an [IP camera](http://www.foscam.com/) some weeks ago and among
 
 ## Requirements
 
-No DB needed !! Just PHP >= 5.2 and you're good to go !
+No DB needed !! No framework !! Just PHP >= 5.2 and you're good to go !
+
+## Screenshots
+
+Here is how the current webapp looks like.
+
+<img src="doc/image/list.jpg" width="70%" />
+
+<img src="doc/image/thumbnails.jpg" width="70%"/>
+
+<img src="doc/image/fullscreen.jpg" width="70%"/>
 
 ## Build
 
