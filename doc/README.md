@@ -1,3 +1,17 @@
+# Overview
+
+The webapp is divided in 2 part :
+
+- the explorer : a basic file explorer that show snapshots and video files grouped
+by day of creation
+- services : features with no user interface designed to be launched periodically
+through a web cron servie for instance.
+
+Currentl 2 services are available :
+
+- **sms** : send an SMS using free.fr SMS service, when a new snapshot is created
+- **purge** : remove files older than a configurable amount of days
+
 # Configuration
 
 The configuration is defined into the file `config.php` located at the root of the project. It is actually a PHP script that defines the **$config** array which is then used by other PHP scripts.
