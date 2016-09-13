@@ -5,14 +5,18 @@ The webapp is divided in 2 part :
 - the explorer : a basic file explorer that show snapshots and video files grouped
 by day of creation
 - services : features with no user interface designed to be launched periodically
-through a web cron servie for instance.
+through a web cron service for instance.
 
-Currentl 2 services are available :
+Currently 2 services are available :
 
-- **sms** : send an SMS using free.fr SMS service, when a new snapshot is created
+- **SMS** : send an SMS using free.fr SMS service, when a new snapshot is created
 - **purge** : remove files older than a configurable amount of days
 
+Service should be invoked through their respective URL, using (for example) an online cron service ( for example [cronless](https://cronless.com/), a free service with no renew period but limited to 2 jobs at this time 09-2016).
+
 # Configuration
+
+## Browser app
 
 The configuration is defined into the file `config.php` located at the root of the project. It is actually a PHP script that defines the **$config** array which is then used by other PHP scripts.
 
@@ -44,16 +48,18 @@ $config = [
 ];
 ```
 
-# Services
+## Services
 
 The web application comes with services :
 
-- **sms** : send an sms when a new image is detected
+- **SMS** : send an SMS when a new image is detected
 - **purge** : perform purge of old image and video
 
 Each service is located in its own folder independently of the other. Each service defines its own configuration settings which are added to the global configuration settings.
 
-## sms service
+
+
+### SMS service
 
 The configuration of the SMS services is done by adding the **service-sms** key to the application configuration array.
 
@@ -85,7 +91,7 @@ $config['service-sms'] = [
   ]
 ];
 ```
-## purge service
+### purge service
 
 The configuration of the SMS services is done by adding the **service-purge** key to the application configuration array.
 
