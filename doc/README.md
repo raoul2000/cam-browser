@@ -50,14 +50,12 @@ $config = [
 
 ## Services
 
-The web application comes with services :
+The web application comes with 2 services :
 
 - **SMS** : send an SMS when a new image is detected
 - **purge** : perform purge of old image and video
 
 Each service is located in its own folder independently of the other. Each service defines its own configuration settings which are added to the global configuration settings.
-
-
 
 ### SMS service
 

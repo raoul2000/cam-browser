@@ -4,19 +4,20 @@ I had to install an [IP camera](http://www.foscam.com/) some weeks ago and among
 
 ## Feature list
 
-- [x] basic HTTP Auhtentication protection
+- [x] basic HTTP Authentication
 - [x] view images(jpg) and video(mkv) created by the cam on movement detection
 - [x] navigate by date folders
-- [x] add support to timezone
+- [x] add support to time zone
 - [x] manual delete selected image and video
 - [x] manual delete image and video per date
-- [x] sms notification on movement detection [free.Fr](http://www.free.fr) only
-- [x] automatics purge files
+- [x] SMS notification on movement detection - [free.Fr](http://www.free.fr) only
+- [x] automatics purge files (dedicated service)
+- [ ] validate configuration on startup
 - [ ] manage more than one single home camera
 
 ## Requirements
 
-No DB needed !! No framework !! Just PHP >= 5.2 and you're good to go !
+No DB needed, no framework, Just PHP >= 5.2 and you're good to go !
 
 ## Screenshots
 
@@ -40,6 +41,9 @@ cd cam-browser
 composer install
 ```
 
+NOTE : the *composer* package installed is [dg/ftp-deployment](https://github.com/dg/ftp-deployment) which is only needed to deploy automatically the project
+on an FTP folder (see next chapter).
+
 ## Deploy FTP
 
 FTP deployment is managed by [ftp deployment](https://github.com/dg/ftp-deployment) which is included
@@ -54,3 +58,7 @@ cp deploy\environment.conf.example deploy\stage.conf
 - update your `deploy\stage.conf` file
 - generate the deployment scripts with `php deploy\create.php stage`
 - start deployment with `deploy\stage`
+
+## Configuration
+
+[learn more about configuration](doc/README.md)
