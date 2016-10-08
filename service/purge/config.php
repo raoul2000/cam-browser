@@ -13,7 +13,7 @@ $config['service-purge'] = [
 
   // number of days video must be kept
   'videoRetentionDays' => 40,
-  
+
   // when TRUE, no file is actually deleted
-  'simulationMode' => true,
+  'simulationMode' => false,
 ];
