@@ -1,4 +1,6 @@
 <?php
+echo '<pre>';
+
 /**
  * Perform file purge.
  *
@@ -27,7 +29,7 @@ function purgeFiles($pattern, $configPurge, $dateNow)
 
   // Extract files to purge //////////////////////////////////////////////////////
   //
-  $filesToDelete = array_map(function($file) use($configPurge, $dateNow){
+  foreach ($files as $file) {
     $dateMTime = new DateTime("@".filemtime($file));
 
     $dateDiff = date_diff($dateNow, $dateMTime);
@@ -35,11 +37,11 @@ function purgeFiles($pattern, $configPurge, $dateNow)
 
     if( $dateDiff->days >= $configPurge['imageRetentionDays']) {
       echo "selected\n";
-      return $file;
+      $filesToDelete[] = $file;
     } else {
       echo "skipped\n";
     }
-  },$files);
+  }
 
   echo "files selected for deletion : ".count($filesToDelete). "\n";
 
@@ -92,3 +94,5 @@ $dirVideo    = $config['baseFolder'] . '/' . $config['folderVideo'] . '/' . $con
 
 purgeFiles($dirSnapshot, $configPurge, $dateNow);
 purgeFiles($dirVideo,    $configPurge, $dateNow);
+
+echo '</pre>';
