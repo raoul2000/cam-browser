@@ -1,5 +1,4 @@
 <?php
-//$json = file_get_contents('http://s326321645.onlinehome.fr/site/ping/san-luis/view.php');
 $json = file_get_contents('./ping/ping.db');
 ?><!DOCTYPE html>
   <html lang="en">

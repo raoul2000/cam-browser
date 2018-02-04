@@ -29,7 +29,6 @@ ignore = "
 	/log
 	temp/*
 	.htaccess
-	/explorer/design
 	/explorer/test
 	/explorer/lib/.htpasswd
 	/service/sms/*.dta
