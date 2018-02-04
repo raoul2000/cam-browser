@@ -15,11 +15,12 @@ test = no
 ignore = "
 	.git*
 	*.log
+	/doc
 	/vendor
 	/explorer/test
 	/deploy/*.ini
+	/deploy/*.log
 	/deploy/*.conf
-	/deploy/*.bat
 	/deploy/*.example
 	/deploy/*.template
 	/deploy/create.php
@@ -28,9 +29,12 @@ ignore = "
 	/log
 	temp/*
 	.htaccess
+	/explorer/design
+	/explorer/test
 	/explorer/lib/.htpasswd
 	/service/sms/*.dta
 	/service/sms/*.log
+	/service/sms/*.md
 	/service/sms/test
 "
 ; is allowed to delete remote files? (defaults to yes)
