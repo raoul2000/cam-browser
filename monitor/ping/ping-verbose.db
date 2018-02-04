@@ -1,0 +1,83 @@
+---------------------
+February 04, 2018 @ 14:00:02 UTC:Array
+(
+    [REDIRECT_UNIQUE_ID] => Wnb1wtTjdw8AAAZ7tGAAAAAp
+    [REDIRECT_SCRIPT_URL] => /site/ping/san-luis/
+    [REDIRECT_SCRIPT_URI] => http://s326321645.onlinehome.fr/site/ping/san-luis/
+    [REDIRECT_DOCUMENT_ROOT] => /kunden/homepages/18/d326321629/htdocs
+    [REDIRECT_UI_SUEXEC_DEFAULT_CHROOT_ID] => 7
+    [REDIRECT_UI_SUEXEC_FSTATD_UNIXSOCKET] => /run/ui-fstatd.suexec.socket
+    [REDIRECT_UI_SUEXEC_STATISTICS_UNIXSOCKET] => /homepages/sclientMF/http.sock.bin
+    [REDIRECT_DBENTRY__RSCLVL_CPU] => 60
+    [REDIRECT_DBENTRY__RSCLVL_MEM] => 768
+    [REDIRECT_DBENTRY__RSCLVL_PROCSOFT] => 25
+    [REDIRECT_DBENTRY__RSCLVL_PROCHARD] => 37
+    [REDIRECT_DBENTRY_HOST] => s326321645.onlinehome.fr
+    [REDIRECT_DBENTRY_VALUE] => /kunden/homepages/18/d326321629/htdocs:d0000#CPU 60 #MEM 524288 #CGI 786762 #NPROC 20 #TAID 58396481 #LANG 2 #RSCLVL 500 #STAT 1 #CHROOT 8
+    [REDIRECT_DBENTRY_DOCROOT] => /kunden/homepages/18/d326321629/htdocs
+    [REDIRECT_DBENTRY_HASH] => d0000
+    [REDIRECT_DBENTRY__CPU] => 60
+    [REDIRECT_DBENTRY__MEM] => 524288
+    [REDIRECT_DBENTRY__CGI] => 786762
+    [REDIRECT_DBENTRY__NPROC] => 20
+    [REDIRECT_DBENTRY__TAID] => 58396481
+    [REDIRECT_DBENTRY__LANG] => 2
+    [REDIRECT_DBENTRY__RSCLVL] => 500
+    [REDIRECT_DBENTRY__STAT] => 1
+    [REDIRECT_DBENTRY__CHROOT] => 8
+    [REDIRECT_DBENTRY] => /kunden/homepages/18/d326321629/htdocs:d0000#CPU 60 #MEM 524288 #CGI 786762 #NPROC 20 #TAID 58396481 #LANG 2 #RSCLVL 500 #STAT 1 #CHROOT 8
+    [REDIRECT_HANDLER] => x-mapp-php5.5
+    [REDIRECT_STATUS] => 200
+    [UNIQUE_ID] => Wnb1wtTjdw8AAAZ7tGAAAAAp
+    [SCRIPT_URL] => /site/ping/san-luis/
+    [SCRIPT_URI] => http://s326321645.onlinehome.fr/site/ping/san-luis/
+    [UI_SUEXEC_DEFAULT_CHROOT_ID] => 7
+    [DBENTRY_HOST] => s326321645.onlinehome.fr
+    [DBENTRY_VALUE] => /kunden/homepages/18/d326321629/htdocs:d0000#CPU 60 #MEM 524288 #CGI 786762 #NPROC 20 #TAID 58396481 #LANG 2 #RSCLVL 500 #STAT 1 #CHROOT 8
+    [DBENTRY_DOCROOT] => /kunden/homepages/18/d326321629/htdocs
+    [DBENTRY_HASH] => d0000
+    [DBENTRY__CPU] => 60
+    [DBENTRY__MEM] => 524288
+    [DBENTRY__CGI] => 786762
+    [DBENTRY__NPROC] => 20
+    [DBENTRY__TAID] => 58396481
+    [DBENTRY__LANG] => 2
+    [DBENTRY__STAT] => 1
+    [DBENTRY__CHROOT] => 8
+    [DBENTRY] => /kunden/homepages/18/d326321629/htdocs:d0000#CPU 60 #MEM 524288 #CGI 786762 #NPROC 20 #TAID 58396481 #LANG 2 #RSCLVL 500 #STAT 1 #CHROOT 8
+    [HTTP_HOST] => s326321645.onlinehome.fr
+    [HTTP_USER_AGENT] => curl/7.38.0
+    [HTTP_ACCEPT] => */*
+    [PATH] => /bin:/usr/bin
+    [SERVER_SIGNATURE] => 
+    [SERVER_SOFTWARE] => Apache
+    [SERVER_NAME] => s326321645.onlinehome.fr
+    [SERVER_ADDR] => 212.227.119.15
+    [SERVER_PORT] => 80
+    [REMOTE_ADDR] => 186.125.18.35
+    [DOCUMENT_ROOT] => /kunden/homepages/18/d326321629/htdocs
+    [REQUEST_SCHEME] => http
+    [CONTEXT_PREFIX] => /system-bin/
+    [CONTEXT_DOCUMENT_ROOT] => /kunden/usr/lib/cgi-bin/
+    [SERVER_ADMIN] => webmaster@s326321645.onlinehome.fr
+    [SCRIPT_FILENAME] => /kunden/homepages/18/d326321629/htdocs/site/ping/san-luis/index.php
+    [REMOTE_PORT] => 53148
+    [REDIRECT_URL] => /site/ping/san-luis/index.php
+    [GATEWAY_INTERFACE] => CGI/1.1
+    [SERVER_PROTOCOL] => HTTP/1.1
+    [REQUEST_METHOD] => GET
+    [QUERY_STRING] => 
+    [REQUEST_URI] => /site/ping/san-luis/
+    [SCRIPT_NAME] => /site/ping/san-luis/index.php
+    [STATUS] => 200
+    [ORIG_PATH_INFO] => /site/ping/san-luis/index.php
+    [ORIG_PATH_TRANSLATED] => /kunden/homepages/18/d326321629/htdocs/site/ping/san-luis/index.php
+    [PHP_SELF] => /site/ping/san-luis/index.php
+    [REQUEST_TIME_FLOAT] => 1517745602.8815
+    [REQUEST_TIME] => 1517745602
+    [argv] => Array
+        (
+        )
+
+    [argc] => 0
+)
