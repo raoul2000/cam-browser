@@ -1,5 +1,5 @@
 {
-    "name": "raoul2000/cam-browser",
+    "name": "raoul2000/san-luis-control",
     "description": "a basic image viewer",
     "require-dev": {
         "dg/ftp-deployment": "^2.7"

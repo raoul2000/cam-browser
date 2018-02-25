@@ -5,8 +5,8 @@
  * The returned array keys are filenames, and values are last modification timestamp.
  * Example :
  * (
- *    [D:\dev\cam-browser/data-sample/img-1.jpg] => 1469873997
- *    [D:\dev\cam-browser/data-sample/img-2.jpg] => 1469873997
+ *    [D:\dev\san-luis-control/data-sample/img-1.jpg] => 1469873997
+ *    [D:\dev\san-luis-control/data-sample/img-2.jpg] => 1469873997
  * )
  * @param  string $day      the day value in format yyyymmdd
  * @param  string $pattern  the file search pattern

@@ -8,7 +8,7 @@ a specific URL in order to provide its current public IP.
 
 ```
 #!/bin/bash
-curl http://you-hostname/cam-browser/monitor/ping/ > /dev/null 2>&1
+curl http://you-hostname/san-luis-control/monitor/ping/ > /dev/null 2>&1
 ```
 
 Another constraint was the poor internet quality : the connection was broken several

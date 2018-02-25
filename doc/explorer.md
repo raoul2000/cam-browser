@@ -44,7 +44,7 @@ $config = [
   'baseFolder' => __DIR__ . '/explorer',
 
   // This is the base URL used to preview images/vdeo files
-  'baseUrl'    => 'http://localhost/dev/cam-browser/explorer',
+  'baseUrl'    => 'http://localhost/dev/san-luis-control/explorer',
 
   // name of the folder where images/video are located. It must be relative
   // to the base folder parameter configured above.

@@ -5,7 +5,7 @@
 This service scan for new image files and when one is found, sends an SMS alert.
 The SMS service used is the one provided for free to all [free.fr](http://www.free.fr) customers.
 
-- endpoint : `http://hostname/cam-browser/service/sms`
+- endpoint : `http://hostname/san-luis-control/service/sms`
 
 To be enabled , the SMS Service endpoint should be invoked periodically to test if new images is available.
 
@@ -27,11 +27,11 @@ require_once('../../config.php');
 
 $config['service-sms'] = [
   // Url of the image browser page
-  'explorerUrl' => "http://localhost/dev/cam-browser/explorer/",
+  'explorerUrl' => "http://localhost/dev/san-luis-control/explorer/",
 
   // Url of a page displaying the image that triggered the alert. This page includes
   // a link to the Image Browser Page
-  'viewImageUrl' => "http://localhost/dev/cam-browser/service/sms/view-image.php/",
+  'viewImageUrl' => "http://localhost/dev/san-luis-control/service/sms/view-image.php/",
 
   // url shortener Service key
   'google-apikey' => 'XXXXX-XXXXX',

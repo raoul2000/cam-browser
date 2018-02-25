@@ -1,6 +1,6 @@
 <?php
 
-// define your own configuration or use the one belonging to the cam-browser
+// define your own configuration or use the one belonging to the san-luis-control
 // project.
 //
 require_once('../../config.php');

@@ -26,8 +26,9 @@ Requirements :
 - composer
 
 ```
-git clone https://github.com/raoul2000/cam-browser.git
-cd cam-browser
+
+git clone https://github.com/raoul2000/san-luis-control.git
+cd san-luis-control
 composer install
 ```
 
