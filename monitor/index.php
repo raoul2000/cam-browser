@@ -159,7 +159,11 @@ $json = file_get_contents('./ping/ping.db');
         $('#last-update').text(timeAgo(sanLuis.ts));
 
         var diff = (new Date() - new Date(sanLuis.ts * 1000)) / 1000;
-
+        /**
+         * the value below depends on the interval between to ping called by
+         * the monitored system. For instance, if the monitored system is configured
+         * to ping every 5 minutes, the numeric value below should be 300 (5 min = 300 sec)
+         */
         if( diff > 3600) {
           $('#alert').addClass('alert-danger');
           $('#warning').show();
