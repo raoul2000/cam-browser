@@ -1,1 +1,1 @@
-See [documentation](../doc/service-sms.md).
+See [documentation](../../doc/service-sms.md).
