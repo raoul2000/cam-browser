@@ -9,8 +9,7 @@ The SMS service used is the one provided for free to all [free.fr](http://www.fr
 
 To be enabled , the SMS Service endpoint should be invoked periodically to test if new images is available.
 
-This services uses **Google shortener URL API** to produce a short url that will be included in the alert SMS sent. This API requires a **google-apikey**.
-
+This services uses **TinyURL API** to produce a short url that will be included in the alert SMS sent. 
 
 # Configuration
 
