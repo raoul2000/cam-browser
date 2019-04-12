@@ -5,6 +5,20 @@ $configSms = $config['service-sms'];
 
 $dataFile = "latest-file.dta";
 
+// Functions /////////////////////////////////////////////////////////////////
+
+function get_tiny_url($url)  {  
+	$ch = curl_init();  
+	$timeout = 5;  
+	curl_setopt($ch,CURLOPT_URL,'http://tinyurl.com/api-create.php?url='.$url);  
+	curl_setopt($ch,CURLOPT_RETURNTRANSFER,1);  
+	curl_setopt($ch,CURLOPT_CONNECTTIMEOUT,$timeout);  
+	$data = curl_exec($ch);  
+	curl_close($ch);  
+	return $data;  
+}
+
+
 // find file by last modification date ////////////////////////////////////////
 //
 $dirSnapshot = $config['baseFolder'] . '/' . $config['folderImg'] . '/' . $config['imageFilePattern'];
@@ -50,11 +64,8 @@ if( ! file_exists($dataFile)){
     echo "image url = $imageUrl<br/>";
 
   	// invoking URL shortener
-  	//
-  	require_once('lib/GoogleUrlApi.php');
-
-  	$googer = new GoogleURLAPI($configSms['google-apikey']);
-  	$shortDWName = $googer->shorten($imageUrl);
+	
+	  $shortDWName = get_tiny_url($imageUrl);
 
   	// building final SMS message
   	//
